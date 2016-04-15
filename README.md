@@ -2,8 +2,7 @@
 
 ------
 
-**SpringMVCDemo** 是一个通用JavaWeb项目骨架， 
-本框架是北京邮电大学CAD中心开发Web项目所使用的基本框架；
+**SpringMVCDemo** 是北京邮电大学CAD中心开发Web项目所使用的基本框架；
 使用Java、Web等一系列技术，搭建开发高性能、高可拓展性、高可维护性，高安全性的web项目；
 以及Web前端模块化、组件化开发，与后台最佳的交互；以及探索使用NoSQL、与SQL等多数据库共存的解决方案；
 提供大量模块参考，比如：权限管理模块。
@@ -21,7 +20,7 @@
 
 ------
 
-## How to get/use it
+## 如何使用本框架
 * git clone git@git.coding.net:asy691/shangzhanbao.git
 * 在MySQL中导入 src/test/resources/springmvc.sql 脚本
 * 更新 src/main/resources/application.properties 中 JDBC Global Setting
