@@ -53,9 +53,10 @@
         <package name="cn.edu.bupt.springmvc.web.model"/>
         <package name="cn.edu.bupt.springmvc.web.enums"/>
     </typeAliases>
-    
+
     <plugins>
-        <plugin interceptor=""></plugin>
+        <plugin interceptor="cn.edu.bupt.springmvc.core.feature.orm.mybatis.PaginationResultSetHandlerInterceptor"></plugin>
+        <plugin interceptor="cn.edu.bupt.springmvc.core.feature.orm.mybatis.PaginationStatementHandlerInterceptor"></plugin>
     </plugins>
 
 </configuration>
