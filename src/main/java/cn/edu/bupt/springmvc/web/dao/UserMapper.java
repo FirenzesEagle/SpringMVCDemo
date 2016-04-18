@@ -1,11 +1,14 @@
 package cn.edu.bupt.springmvc.web.dao;
 
+import cn.edu.bupt.springmvc.core.feature.orm.mybatis.Page;
+import cn.edu.bupt.springmvc.core.generic.GenericDao;
 import cn.edu.bupt.springmvc.web.model.User;
 import cn.edu.bupt.springmvc.web.model.UserExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface UserMapper {
+import java.util.List;
+
+public interface UserMapper extends GenericDao<User, Long> {
     int countByExample(UserExample example);
 
     int deleteByExample(UserExample example);
@@ -27,4 +30,21 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    /**
+     * 用户登录验证查询
+     *
+     * @param record
+     * @return
+     */
+    User authentication(@Param("record") User record);
+
+    /**
+     * 分页条件查询
+     *
+     * @param page
+     * @param example
+     * @return
+     */
+    List<User> selectByExampleAndPage(Page<User> page, UserExample example);
 }

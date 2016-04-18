@@ -47,5 +47,15 @@
                enableDeleteByExample="true" enableSelectByExample="true"
                enableUpdateByExample="true">
         </table>
+        <table schema="${jdbc.schema}" tableName="permission"
+               domainObjectName="Permission" enableCountByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true">
+        </table>
+        <table schema="${jdbc.schema}" tableName="role"
+               domainObjectName="Role" enableCountByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true">
+        </table>
     </context>
 </generatorConfiguration>
