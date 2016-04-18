@@ -2,6 +2,9 @@ package cn.edu.bupt.springmvc.web.model;
 
 import java.util.Date;
 
+/**
+ * 用户模型
+ */
 public class User {
     private Long id;
 
@@ -61,4 +64,10 @@ public class User {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+
+    @Override
+    public String toString() {
+        return "User [id=" + id + ", username=" + username + ", password=" + password + ", state=" + state + ", createTime=" + createTime + "]";
+    }
+
 }

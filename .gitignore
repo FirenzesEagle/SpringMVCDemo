@@ -66,3 +66,5 @@ fabric.properties
 /work
 /.tomcatplugin
 /src/main/webapp/.#webclasspath
+/README.md
+/SpringMVCDemo.iml

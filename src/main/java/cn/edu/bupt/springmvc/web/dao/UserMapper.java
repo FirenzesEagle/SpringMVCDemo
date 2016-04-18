@@ -8,6 +8,9 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+/**
+ * 用户Dao接口
+ */
 public interface UserMapper extends GenericDao<User, Long> {
     int countByExample(UserExample example);
 
