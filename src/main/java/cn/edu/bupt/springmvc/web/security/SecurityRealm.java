@@ -1,4 +1,4 @@
-package cn.edu.bupt.springmvc.web.sercurity;
+package cn.edu.bupt.springmvc.web.security;
 
 import cn.edu.bupt.springmvc.web.model.Permission;
 import cn.edu.bupt.springmvc.web.model.Role;
