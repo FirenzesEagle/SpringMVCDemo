@@ -25,12 +25,12 @@
 ------
 
 ## 如何使用本框架
-* git clone git@git.coding.net:asy691/shangzhanbao.git
+* git clone git@github.com:FirenzesEagle/SpringMVCDemo.git
 * 在MySQL中导入 src/test/resources/springmvc.sql 脚本
 * 更新 src/main/resources/application.properties 中 JDBC Global Setting
-* cd shangzhanbao
+* cd SpringMVCDemo
 * mvn war:war 
-* 把 target/shangzhanbao.war 发布在App Server(Tomcat、JBOSS) 中
+* 把 target/SpringMVCDemo.war 发布在App Server(Tomcat、JBOSS) 中
 
 ------
 
