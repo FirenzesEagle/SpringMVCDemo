@@ -1,5 +1,6 @@
 package cn.edu.bupt.springmvc.web.service.impl;
 
+import cn.edu.bupt.springmvc.core.feature.orm.mybatis.Page;
 import cn.edu.bupt.springmvc.core.generic.GenericDao;
 import cn.edu.bupt.springmvc.core.generic.GenericServiceImpl;
 import cn.edu.bupt.springmvc.web.dao.UserMapper;

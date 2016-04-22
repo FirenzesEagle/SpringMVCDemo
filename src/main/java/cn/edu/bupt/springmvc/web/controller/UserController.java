@@ -61,6 +61,7 @@ public class UserController {
         } catch (AuthenticationException e) {
             // 身份验证失败
             model.addAttribute("error", "用户名或密码错误 ！");
+            e.printStackTrace();
             return "login";
         }
         return "redirect:/";

@@ -193,4 +193,11 @@
       description = #{description,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <!-- 通过角色id 查询角色 拥有的权限 -->
+  <select id="selectPermissionsByRoleId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    SELECT p.* FROM permission p LEFT JOIN role_permission rp ON rp.permission_id = p.id
+    WHERE rp.role_id =
+    #{id,jdbcType=BIGINT}
+  </select>
 </mapper>
