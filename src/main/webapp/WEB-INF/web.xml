@@ -86,7 +86,7 @@
     <!-- 首页 -->
     <welcome-file-list>
         <welcome-file>rest/index</welcome-file>
-</welcome-file-list>
+    </welcome-file-list>
 
     <!-- 错误页 -->
     <error-page>
