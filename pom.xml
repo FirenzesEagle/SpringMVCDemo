@@ -236,12 +236,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>${gson.version}</version>
-        </dependency>
-
         <!-- jstl -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -292,6 +286,12 @@
             <groupId>com.google.collections</groupId>
             <artifactId>google-collections</artifactId>
             <version>${google.collections.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
         </dependency>
 
         <!-- cglib -->
