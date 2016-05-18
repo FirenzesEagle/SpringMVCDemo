@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
     <description>apache shiro配置</description>
 
@@ -10,6 +13,13 @@
         <property name="loginUrl" value="/rest/page/login"/>
         <property name="successUrl" value="/rest/index"/>
         <property name="unauthorizedUrl" value="/rest/page/401"/>
+        <!--
+        <property name="filters">
+            <util:map>
+                 <entry key="authc" value-ref="formAuthenticationFilter"/> 
+            </util:map>
+        </property>
+        -->
         <property name="filterChainDefinitions">
             <value>
                 <!-- 静态资源允许访问 -->
@@ -17,6 +27,8 @@
                 /assets/** = anon
                 <!-- 登录页允许访问 -->
                 /rest/user/login = anon
+                <!-- 用户退出 -->
+                /rest/user/logout = logout
                 <!-- 其他资源需要认证 -->
                 /** = authc
             </value>
@@ -119,5 +131,5 @@
     
     <!-- Shiro生命周期处理器 -->
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
-
+	
 </beans>

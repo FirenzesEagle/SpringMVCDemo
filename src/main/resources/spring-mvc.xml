@@ -83,5 +83,8 @@
     <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
         <property name="securityManager" ref="securityManager"/>
     </bean>
-
+    
+	<!-- 默认首页 -->
+	<mvc:view-controller path="/" view-name="redirect:rest/index"/>
+	
 </beans>
