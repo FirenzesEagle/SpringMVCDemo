@@ -3,14 +3,11 @@
        xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
-        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!-- 扫描controller（controller层注入） -->
     <context:component-scan base-package="cn.edu.bupt.springmvc.web.controller"/>
@@ -18,6 +15,13 @@
     <!-- 会自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter 两个bean,是spring MVC为@Controllers分发请求所必须的 -->
     <!-- 指定自己定义的validator -->
     <mvc:annotation-driven validator="validator"/>
+
+    <!-- 设置freeMarker的配置文件路径 -->
+    <bean id="freemarkerConfiguration"
+          class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <!--注释掉的下方代码是指引freemarker的基本信息的配置位置，因为我已经将配置信息移到了applicationContext文件下，所以这里就没必要存在了，不注释也不会有问题的 -->
+        <!--<property name="location" value="classpath:/WEB-INF/config/freemarker.properties" />-->
+    </bean>
 
     <!-- 以下 validator ConversionService 在使用 mvc:annotation-driven 会 自动注册 -->
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
@@ -67,9 +71,22 @@
     </bean>
 
     <!--ViewResolver 视图解析器-->
-    <!--用于支持Servlet、JSP视图解析-->
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-          p:prefix="/WEB-INF/views/" p:suffix=".jsp"/>
+    <!--用于支持html视图解析-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="exposeRequestAttributes" value="true" />
+        <property name="exposeSessionAttributes" value="true" />
+        <property name="viewClass">
+            <value>org.springframework.web.servlet.view.freemarker.FreeMarkerView</value>
+        </property>
+        <property name="cache"><value>true</value></property>
+        <!--这里需要注意一下，我注释了下面这样一行代码，这行代码的意思就是指引freemarker需要解析的文件的位置。注释掉原因是因为
+         applicationContext.xml里有这样一行代码：<property name="templateLoaderPath" value="/WEB-INF/views/" /> 已经指定了视图位置。如果我们这里依然保留下方代码，页面回报406的找不到的错误 -->
+        <!--<property name="prefix"><value>/WEB-INF/views/</value></property>-->
+        <property name="suffix"><value>.html</value></property>
+        <property name="contentType">
+            <value>text/html; charset=UTF-8</value>
+        </property>
+    </bean>
 
     <!-- 配置springMVC处理上传文件的信息 -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

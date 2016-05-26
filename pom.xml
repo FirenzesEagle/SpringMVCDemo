@@ -199,6 +199,14 @@
         </dependency>
         <!-- springframe end -->
 
+        <!-- freemarker start-->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.23</version>
+        </dependency>
+        <!--freemarker end-->
+
         <!-- mybatis start-->
         <dependency>
             <groupId>org.mybatis</groupId>

@@ -22,4 +22,9 @@ public class CommonController {
     public String index(HttpServletRequest request) {
         return "index";
     }
+
+    @RequestMapping("/test/index2")
+    public String index2(HttpServletRequest request){
+        return "/test/index2";
+    }
 }
