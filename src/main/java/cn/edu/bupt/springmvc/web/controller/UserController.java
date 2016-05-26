@@ -1,5 +1,6 @@
 package cn.edu.bupt.springmvc.web.controller;
 
+import cn.edu.bupt.springmvc.core.generic.GenericController;
 import cn.edu.bupt.springmvc.web.model.User;
 import cn.edu.bupt.springmvc.web.security.PermissionSign;
 import cn.edu.bupt.springmvc.web.security.RoleSign;
@@ -15,21 +16,24 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * 用户控制器
- *
+ * <p>
  * Created by FirenzesEagle on 2016/4/18 0018.
  */
 @Controller
 @RequestMapping(value = "/user")
-public class UserController {
+public class UserController extends GenericController {
 
     @Resource
     private UserService userService;
@@ -65,6 +69,12 @@ public class UserController {
             return "login";
         }
         return "redirect:/";
+    }
+
+    @RequestMapping(value = "/alluser", method = RequestMethod.GET)
+    public void allUser(@RequestParam("pageNo") int pageNo, @RequestParam("pageSize") int pageSize, HttpServletResponse response) {
+        List<User> userList = userService.selectByPage(pageNo, pageSize);
+        renderString(response,userList);
     }
 
     /**

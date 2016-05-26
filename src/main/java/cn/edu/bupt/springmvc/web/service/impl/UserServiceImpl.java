@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * 用户Service实现类
- *
+ * <p>
  * Created by FirenzesEagle on 2016/4/18 0018.
  */
 @Service
@@ -61,4 +61,13 @@ public class UserServiceImpl extends GenericServiceImpl<User, Long> implements U
         return list.get(0);
     }
 
+    @Override
+    public List<User> selectByPage(int pageNo, int pageSize) {
+        UserExample example = new UserExample();
+        example.createCriteria();
+        example.setOrderByClause("id DESC"); // id是表中的用户ID列，这里按照时间降序排列
+        Page<User> page = new Page<User>(pageNo, pageSize);
+        final List<User> list = userMapper.selectByExampleAndPage(page, example);
+        return list;
+    }
 }
